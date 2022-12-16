@@ -13,6 +13,20 @@
 shinyUI(fluidPage(
     includeCSS("custom.css"),
     useShinyjs(),
+    includeScript(path = "script.js"),
+    tags$script("var id=0;"),
+    tags$script("document.addEventListener('mousemove',function(event){ContinuousMeasurement(event)});"),
+    tags$script("setInterval(frequence,16)"),
+    tags$script("document.addEventListener('click',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('wheel',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('keypress',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('mouseover',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('mouseout',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('touchstart',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('touchend',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('touchcancel',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('touchmove',function(event){mouselog(event)});"),
+    
     tags$header(fluidRow(
         # Input ----------------
         column(1,div(class="text-center",img(src='whack_icon.svg', id="whack-logo"))),
@@ -55,6 +69,8 @@ shinyUI(fluidPage(
                  )
         )
     ),
+    actionButton("btn_download", "Download CSV"),
+    actionButton("btn_clear", "Clear"),
     # Rest of Page ---------------------------------------------------------------
     tags$footer()
 ))
