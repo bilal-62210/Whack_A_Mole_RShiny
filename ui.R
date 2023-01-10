@@ -16,10 +16,6 @@ shinyUI(fluidPage(
     includeScript(path = "script.js"),
     tags$script("var id=0;"),
     tags$script("setInterval(frequence,16)"),
-    tags$script("document.addEventListener('pointerdown',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('pointerup',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('pointerover',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('pointerout',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('wheel',function(event){mouselog(event)});"),
     
     tags$header(fluidRow(
