@@ -16,10 +16,10 @@ shinyUI(fluidPage(
     includeScript(path = "script.js"),
     tags$script("var id=0;"),
     tags$script("setInterval(frequence,16)"),
-    tags$script("document.addEventListener('touchstart',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('touchend',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('touchcancel',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('touchmove',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('pointerdown',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('pointerup',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('pointerover',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('pointerout',function(event){mouselog(event)});"),
     
     tags$header(fluidRow(
         # Input ----------------
