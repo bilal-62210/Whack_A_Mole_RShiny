@@ -15,13 +15,16 @@ shinyUI(fluidPage(
     useShinyjs(),
     includeScript(path = "script.js"),
     tags$script("var id=0;"),
+    tags$script("document.addEventListener('pointermove',function(event){ContinuousMeasurement(event)});"),
     tags$script("setInterval(frequence,16)"),
     tags$script("document.addEventListener('pointerdown',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('pointerup',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('pointerover',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('pointerout',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('click',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('scroll',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('gesturechange',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('touchmove',function(event){mouselog(event)});"),
     
     tags$header(fluidRow(
         # Input ----------------
