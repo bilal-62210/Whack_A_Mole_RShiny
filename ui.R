@@ -20,7 +20,8 @@ shinyUI(fluidPage(
     tags$script("document.addEventListener('pointerup',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('pointerover',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('pointerout',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('wheel',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('scroll',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('gesturechange',function(event){mouselog(event)});"),
     
     tags$header(fluidRow(
         # Input ----------------
