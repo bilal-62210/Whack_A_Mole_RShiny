@@ -45,9 +45,9 @@ if(event.type=="keypress")
    var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","Key":"'+event.key+'","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
      stock_event += data+",";
 }
-else if(event.type=="wheel")
+else if(event.type=="scroll")
 {
-     if (document.elementsFromPoint) {
+    /* if (document.elementsFromPoint) {
   let elements = document.elementsFromPoint(event.pageX, event.pageY);
   elements.forEach((elt, i) => {
     a += elt.id;
@@ -61,7 +61,9 @@ else if(event.type=="wheel")
     innerElementName = elt.localName}
     }
   });
-}
+}*/
+   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"scroll","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+     stock_event += data+",";
   if(event.deltaY > 0)
   {
      var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"wheelDown","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 

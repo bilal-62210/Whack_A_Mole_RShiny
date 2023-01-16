@@ -23,12 +23,7 @@ shinyUI(fluidPage(
     tags$script("document.addEventListener('pointerout',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('click',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('keypress',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('wheel',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('gesturechange',function(event){mouselog(event)});"),
-    tags$script("document.addEventListener('touchmove',function(event){mouselog(event)});"),
-    tags$script("document.on('pointermove', function() {
-      document.trigger('wheel');
-    });"),
+    tags$script("window.addEventListener('scroll',function(event){mouselog(event)});"),
     
     
     tags$header(fluidRow(
