@@ -18,7 +18,7 @@ let pagey;
 link_event = "log"+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds()+'.'+d.getMilliseconds()+"Event.csv";
 link_continuous_measurment="log"+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds()+'.'+d.getMilliseconds()+"ContinuousMeasurement.csv";
 link_meta = "log"+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds()+'.'+d.getMilliseconds()+"Meta.csv";
-head_fields1=["Timestamp","SessionID","DeviceID","Event","PointerType","Key","Element","elementsFromPointName","elementsFromPointID","LastElementWithName","LastElementWithIdentity","Screen-x","Screen-y","SectionID","SessionDuration","Email","Framecount"];
+head_fields1=["Timestamp","SessionID","DeviceID","Event","PointerID","PointerType","PointerHeight","PointerWidth","PointerPressure","Key","Element","elementsFromPointName","elementsFromPointID","LastElementWithName","LastElementWithIdentity","Screen-x","Screen-y","SectionID","SessionDuration","Email","Framecount"];
 head_fields2=["Timestamp","SessionID","ScreenX","ScreenY","elementsFromPointName","elementsFromPointID","LastElementWithName","LastElementWithIdentity","Email","Framecount"];
 head_fields3=["Timestamp","SessionID","TargetSamplingRate","MeasuredSamplingRate","Duration","Email","Framecount"];
 
@@ -35,16 +35,16 @@ function mouselog(event)
       date1 = new Date(start_time);
       date2 = new Date(end_time_event);
       tmp = ((date2 - date1)/1000);
-      logging_ended ='{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"logging_ended","PointerType":"null","Key":"null","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}';
+      logging_ended ='{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"logging_ended","PointerID":"null","PointerType":"null","PointerHeight":"null","PointerWidth":"null","PointerPressure":"null","Key":"null","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}';
       
 if(stock_event=="")
 {
-  var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"logging_started","PointerType":"null","Key":"null","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+  var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"logging_started","PointerID":"null","PointerType":"null","PointerHeight":"null","PointerWidth":"null","PointerPressure":"null","Key":"null","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
   stock_event += data+",";
 }
 if(event.type=="keypress")
 {
-   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerType":"null","Key":"'+event.key+'","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerID":"null","PointerType":"null","PointerHeight":"null","PointerWidth":"null","PointerPressure":"null","Key":"'+event.key+'","Element":"null","elementsFromPointName":"null","elementsFromPointID":"null","LastElementWithName":"null","LastElementWithIdentity":"null","ScreenX":"null","ScreenY":"null","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
      stock_event += data+",";
 }
 else if(event.type=="scroll")
@@ -64,16 +64,16 @@ else if(event.type=="scroll")
     }
   });
 }
-   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerType":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+pagex+'","ScreenY":"'+pagey+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerID":"null","PointerType":"null","PointerHeight":"null","PointerWidth":"null","PointerPressure":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+pagex+'","ScreenY":"'+pagey+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
      stock_event += data+",";
   if(event.deltaY > 0)
   {
-     var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"wheelDown","PointerType":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+     var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"wheelDown","PointerID":"null","PointerType":"null","PointerHeight":"null","PointerWidth":"null","PointerPressure":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
      stock_event += data+",";
   }
   else if(event.deltaY < 0)
   {
-    var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"wheelup","PointerType":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+    var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"wheelup","PointerID":"null","PointerType":"null","PointerHeight":"null","PointerWidth":"null","PointerPressure":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
     stock_event += data+",";
   }
 }
@@ -94,7 +94,7 @@ else
     }
   });
 }
-   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerType":"'+event.pointerType+'","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerID":"'+event.pointerId+'","PointerType":"'+event.pointerType+'","PointerHeight":"'+event.height+'","PointerWidth":"'+event.width+'","PointerPressure":"'+event.pressure+'","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
    stock_event += data+",";
 }
 
@@ -117,7 +117,11 @@ function JSON2CSV(objArray, head_field)
         SessionID = element.SessionID;
         DeviceID = element.DeviceID;
         Event= element.Event;
+        PointerID= element.PointerID;
         PointerType= element.PointerType;
+        PointerHeight= element.PointerHeight;
+        PointerWidth= element.PointerWidth;
+        PointerPressure= element.PointerPressure;
         Key= element.Key;
         Element=element.Element;
         elementsFromPointName=element.elementsFromPointName;
@@ -131,7 +135,7 @@ function JSON2CSV(objArray, head_field)
         Email=element.Email;
         Framecount=element.Framecount;
     
-            csvStr +=Timestamp + ';' + SessionID + ';' + DeviceID + ';' + Event + ';'  + PointerType + ';' + Key + ';' + Element + ';'+ elementsFromPointName + ';'+ elementsFromPointID + ';'+ LastElementWithName + ';' + LastElementWithIdentity + ';' + ScreenX + ';' + ScreenY + ';' + SectionID + ';' + SessionDuration + ';' + Email +';' + Framecount +"\n";
+            csvStr +=Timestamp + ';' + SessionID + ';' + DeviceID + ';' + Event + ';' + PointerID + ';' + PointerType + ';' + PointerHeight + ';'+ PointerWidth + ';'+ PointerPressure + ';'+ Key + ';' + Element + ';'+ elementsFromPointName + ';'+ elementsFromPointID + ';'+ LastElementWithName + ';' + LastElementWithIdentity + ';' + ScreenX + ';' + ScreenY + ';' + SectionID + ';' + SessionDuration + ';' + Email +';' + Framecount +"\n";
     })}
     else if(head_field==head_fields2)
     {
@@ -225,8 +229,7 @@ function ContinuousMeasurement(event)
     
     pagex= event.pageX;
     pagey= event.pageY;
-    console.log(pagex);
-   
+    
   end_time=d.getFullYear()+"-"+ (d.getUTCMonth()+1) +"-"+d.getUTCDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+':'+d.getMilliseconds();
     
 }
