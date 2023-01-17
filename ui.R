@@ -23,7 +23,7 @@ shinyUI(fluidPage(
     tags$script("document.addEventListener('pointerout',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('click',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('keypress',function(event){mouselog(event)});"),
-    tags$script("window.addEventListener('scroll',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('scroll',function(event){mouselog(event)});"),
     
     
     tags$header(fluidRow(

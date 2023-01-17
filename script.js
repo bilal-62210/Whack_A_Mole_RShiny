@@ -13,6 +13,8 @@ let end_time_event = new Date();
 let d = new Date();
 let continuous_rows = new String();
 let logging_ended = new String();
+let pagex;
+let pagey;
 link_event = "log"+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds()+'.'+d.getMilliseconds()+"Event.csv";
 link_continuous_measurment="log"+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds()+'.'+d.getMilliseconds()+"ContinuousMeasurement.csv";
 link_meta = "log"+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+'-'+d.getMinutes()+'-'+d.getSeconds()+'.'+d.getMilliseconds()+"Meta.csv";
@@ -47,8 +49,8 @@ if(event.type=="keypress")
 }
 else if(event.type=="scroll")
 {
-    /* if (document.elementsFromPoint) {
-  let elements = document.elementsFromPoint(event.pageX, event.pageY);
+      if (document.elementsFromPoint) {
+  let elements = document.elementsFromPoint(pagex, pagey);
   elements.forEach((elt, i) => {
     a += elt.id;
     b += elt.localName;
@@ -61,8 +63,8 @@ else if(event.type=="scroll")
     innerElementName = elt.localName}
     }
   });
-}*/
-   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerType":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
+}
+   var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","DeviceID":"'+getMachineId()+'","Event":"'+event.type+'","PointerType":"null","Key":"null","Element":"'+event.target.id+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName+'","LastElementWithIdentity":"'+innerElementID+'","ScreenX":"'+pagex+'","ScreenY":"'+pagey+'","SectionID":"'+window.location.href+'","SessionDuration":"'+tmp+'","Email":"anonymous","Framecount":"NA"}'; 
      stock_event += data+",";
   if(event.deltaY > 0)
   {
@@ -220,7 +222,11 @@ function ContinuousMeasurement(event)
 }
     var data = '{"Timestamp":"'+d.getFullYear()+'-'+ (d.getUTCMonth()+1) +'-'+d.getUTCDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds()+'", "SessionID":"'+SessionID+'","ScreenX":"'+event.pageX+'","ScreenY":"'+event.pageY+'","elementsFromPointName":"'+b+'","elementsFromPointID":"'+a+'","LastElementWithName":"'+innerElementName_continuous+'","LastElementWithIdentity":"'+innerElementID_continuous+'","Email":"anonymous","Framecount":"NA"}'; 
     stock_continuous_measurement = data;
-
+    
+    pagex= event.pageX;
+    pagey= event.pageY;
+    console.log(pagex);
+   
   end_time=d.getFullYear()+"-"+ (d.getUTCMonth()+1) +"-"+d.getUTCDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+':'+d.getMilliseconds();
     
 }
