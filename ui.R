@@ -14,7 +14,6 @@ shinyUI(fluidPage(
     includeCSS("custom.css"),
     useShinyjs(),
     includeScript(path = "script.js"),
-    tags$script("var id=0;"),
     tags$script("document.addEventListener('pointermove',function(event){ContinuousMeasurement(event)});"),
     tags$script("setInterval(frequence,16)"),
     tags$script("document.addEventListener('pointerdown',function(event){mouselog(event)});"),
