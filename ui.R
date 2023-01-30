@@ -24,6 +24,7 @@ shinyUI(fluidPage(
     tags$script("document.addEventListener('click',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('keypress',function(event){mouselog(event)});"),
     tags$script("document.addEventListener('scroll',function(event){mouselog(event)});"),
+    tags$script("document.addEventListener('gesturechange',function(event){mouselog(event)});"),
     
     
     tags$header(fluidRow(
